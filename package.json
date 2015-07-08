@@ -1,0 +1,34 @@
+{
+  "name": "kpi-me",
+  "version": "0.0.0",
+  "description": "app to track personal KPIs",
+  "main": "index.js",
+  "scripts": {
+    "test": "exit 1",
+    "build": "npm run build:scripts -s && npm run build:html -s",
+    "build:scripts": "browserify src/entry.js -d -o build/bundle.js",
+    "build:html": "cp src/*.html build/ && cp src/*.css build/",
+    "live-reload": "live-reload --port 9091 build/",
+    "watch:build": "watch 'npm run build' src/",
+      "watch": "npm run watch:build -s",
+      "serve": "http-server -p 9090 build/",
+    "dev": "parallelshell 'npm run live-reload -s' 'npm run watch -s' 'npm run serve -s'"
+  },
+  "browserify": {
+    "transform": [
+      "reactify"
+    ]
+  },
+  "author": "Ryan Davis <ryepup@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "browserify": "^10.2.4",
+    "http-server": "^0.8.0",
+    "live-reload": "^1.1.0",
+    "parallelshell": "^1.2.0",
+    "react": "^0.13.3",
+    "react-tools": "^0.13.3",
+    "reactify": "^1.1.1",
+    "watch": "^0.16.0"
+  }
+}
