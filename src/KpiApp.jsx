@@ -3,13 +3,16 @@
 var React = require('react'),
     KpiList = require('./KpiList.jsx'),
     KpiForm = require('./KpiForm.jsx'),
-    KPI_ME = 'kpi-me'
+    KPI_ME = 'kpi-me',
+    eventBus = require('./EventBus.js')
 ;
 
 module.exports = React.createClass({
   getInitialState: function() { return {kpis: []}; },
   componentDidMount: function() {
     this.setState(JSON.parse(localStorage.getItem(KPI_ME)));
+    eventBus.on(eventBus.events.ADD_DATAPOINT, this.addDataPoint);
+    eventBus.on(eventBus.events.ADD_KPI, this.addKpi);
   },
   saveToLocalStorage: function() {
     localStorage.setItem(KPI_ME, JSON.stringify(this.state));
@@ -26,8 +29,8 @@ module.exports = React.createClass({
   },
   render: function() {
     return (<div className="container-fluid">
-            <KpiList kpis={this.state.kpis} onAddDataPoint={this.addDataPoint} />
-            <KpiForm onSubmit={this.addKpi}/>
+            <KpiList kpis={this.state.kpis} />
+            <KpiForm />
             </div>);
   }
 });

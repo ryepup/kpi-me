@@ -22,8 +22,7 @@ module.exports = React.createClass({
     console.log(lineData);
     return (<div><rd3.LineChart
               data={lineData}
-            width="100%"
-              height={200}
+            height={200}
               viewBoxObject={{
                 x: 0,
                 y: 0,

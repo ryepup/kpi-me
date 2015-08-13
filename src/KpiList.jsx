@@ -2,29 +2,28 @@
 
 var React = require('react'),
     KpiItem = require('./KpiItem.jsx'),
-    rbs = require('react-bootstrap')
+    bs = require('react-bootstrap')
 ;
 module.exports = React.createClass({
   getInitialState: function() {
-    return {selected: null};
+    return {activeKey: null};
+  },
+  handleSelect: function(key) {
+    this.setState({ activeKey: key });
   },
   render: function() {
     var self = this;
     var kpis = this.props.kpis.map(function(kpi, i) {
-      var onClick = function(e) {
-        e.preventDefault();
-        self.setState({selected: kpi});
-      },
-          open = kpi === this.state.selected;
-      return (<rbs.ListGroupItem onClick={onClick} active={open} header={kpi.name} key={i}>
-              <KpiItem kpi={kpi} open={open} onAddDataPoint={this.props.onAddDataPoint} />
-              </rbs.ListGroupItem>);
-    }, this);
+      return (<bs.Panel header={kpi.name} eventKey={i} key={i}>
+              <KpiItem kpi={kpi} />
+              </bs.Panel>);
+    });
     return (<div>
             <h2>KPIs</h2>
-            <rbs.ListGroup>
+            <bs.PanelGroup
+            activeKey={this.state.activeKey} onSelect={this.handleSelect} accordion>
             {kpis}
-            </rbs.ListGroup>
+            </bs.PanelGroup>
             </div>);
   }
 });

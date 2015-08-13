@@ -8,19 +8,17 @@ var React = require('react'),
 
 module.exports = React.createClass({
   render: function() {
-    if(this.props.open)
-    return (<rbs.Collapse in={this.props.open}>
+    return (
             <rbs.Grid>
             <rbs.Row>
             <rbs.Col xs={12} sm={6} md={8} lg={10}><KpiGraph kpi={this.props.kpi}/></rbs.Col>
-            <rbs.Col xs={12} sm={6} md={4} lg={2}><KpiAddDataPoint onAddDataPoint={this.props.onAddDataPoint} kpi={this.props.kpi}/></rbs.Col>
+            <rbs.Col xs={12} sm={6} md={4} lg={2}><KpiAddDataPoint kpi={this.props.kpi}/></rbs.Col>
             </rbs.Row>
             <rbs.Row>
             <rbs.Col xs={12} md={6}>[STATS]</rbs.Col>
             </rbs.Row>
             </rbs.Grid>
-            </rbs.Collapse>
+
            );
-    return null;
   }
 });

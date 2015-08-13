@@ -1,13 +1,14 @@
 'use strict'; // -*- mode:js2 -*-
 
 var React = require('react'),
-    rbs = require('react-bootstrap')
+    bs = require('react-bootstrap'),
+    eventBus = require('./EventBus.js')
 ;
 
 module.exports = React.createClass({
   add: function(e) {
     e.preventDefault();
-    this.props.onAddDataPoint({
+    eventBus.publish(eventBus.events.ADD_DATAPOINT, {
       kpi: this.props.kpi,
       point: {
         utime: new Date().getTime(),
@@ -16,9 +17,9 @@ module.exports = React.createClass({
     });
   },
   render: function() {
-    var addBtn = <rbs.ButtonInput bsStyle="primary" type="button" onClick={this.add}>Add</rbs.ButtonInput>;
+    var addBtn = <bs.ButtonInput bsStyle="primary" type="button" onClick={this.add}>Add</bs.ButtonInput>;
     return (
-            <rbs.Input type="number" buttonAfter={addBtn} ref="amount"/>
+            <bs.Input type="number" buttonAfter={addBtn} ref="amount"/>
     );
   }
 });
