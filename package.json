@@ -10,7 +10,7 @@
     "watch:html": "watch 'cp src/index.html build/' src/",
     "watch": "parallelshell 'npm run watch:build -s' 'npm run watch:html -s'",
     "serve": "parallelshell 'npm run serve:html -s' 'npm run serve:livereload -s'",
-    "serve:html": "http-server -p 3000 build/",
+    "serve:html": "http-server -p 3000 build/ -o",
     "serve:livereload": "live-reload --port 9091 build/",
     "start": "parallelshell 'npm run watch -s' 'npm run serve -s'"
   },
