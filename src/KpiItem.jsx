@@ -7,7 +7,9 @@ var React = require('react'),
 ;
 
 module.exports = React.createClass({
+  mixins: [require('./WidthMixin.js')],
   render: function() {
+    if(this.state.width === 0) return (<div/>);
     return (
             <rbs.Grid>
             <rbs.Row>

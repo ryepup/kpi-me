@@ -1,34 +1,29 @@
 'use strict'; // -*- mode:js2 -*-
 
 var React = require('react'),
-    rd3 = require('react-d3');
+    ChartistGraph = require('react-chartist')
+;
 
 module.exports = React.createClass({
   render: function() {
-    console.log('Graphing', this.props.kpi);
-    if(!this.props.kpi.points){
-      return (<div>No data</div>);
+    if(!this.props.kpi.points || this.props.kpi.points.length <= 1){
+      return (<div>Not enough data</div>);
     }
 
-    var lineData = [
-  {
-    name: this.props.kpi.name,
-    values: this.props.kpi.points.map(function(point, idx) {
-      return {x: idx, y: point.value};
-    }),
-    strokeWidth: 3,
-    strokeDashArray: "5,5"
-  }];
-    console.log(lineData);
-    return (<div><rd3.LineChart
-              data={lineData}
-            height={200}
-              viewBoxObject={{
-                x: 0,
-                y: 0,
-                width: 500,
-                height: 200
-              }}
-            /></div>);
+    var chartOpts = {
+      fullWidth: true,
+      axisX: {
+        labelInterpolationFnc: function(value, index) {
+          return value;
+          return index % 13 === 0 ? 'W' + value : null;
+        }
+      }
+    },
+        chartData = {
+          labels: this.props.kpi.points.map(function(p) { return p.utime; }),
+          series: [this.props.kpi.points.map(function(p) { return p.value; })]
+        };
+
+    return (<ChartistGraph data={chartData} options={chartOpts} type={'Line'}/>);
   }
 });

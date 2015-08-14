@@ -25,7 +25,7 @@ module.exports = React.createClass({
     var kpi = this.state.kpis[idx];
     kpi.points = kpi.points || [];
     kpi.points.push(opts.point);
-    this.setState({kpis: this.state.kpis}, this.saveToLocalStorage);
+    this.forceUpdate(this.saveToLocalStorage);
   },
   render: function() {
     return (<div className="container-fluid">
