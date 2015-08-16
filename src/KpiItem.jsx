@@ -29,9 +29,9 @@ module.exports = React.createClass({
         <rbs.Row>
         <rbs.Col xs={12} sm={6} md={8} lg={10}><KpiStats kpi={this.props.kpi} /></rbs.Col>
         <rbs.Col xs={12} sm={6} md={4} lg={2}>
-        <rbs.Button bsStyle="danger" onClick={this.onDeleteKpi}><rbs.Glyphicon glyph="trash"/> Delete KPI</rbs.Button><br/><br/>
-        <rbs.Button bsStyle="danger" onClick={this.onDeleteLastPoint}><rbs.Glyphicon glyph="trash"/> Delete last point</rbs.Button>
-
+        <rbs.Button bsStyle="warning" onClick={this.onDeleteLastPoint}><rbs.Glyphicon glyph="trash"/> Delete last point</rbs.Button>
+        <br/><br/>
+        <rbs.Button bsStyle="danger" onClick={this.onDeleteKpi}><rbs.Glyphicon glyph="trash"/> Delete KPI</rbs.Button>
         </rbs.Col>
         </rbs.Row>
         </rbs.Grid>
