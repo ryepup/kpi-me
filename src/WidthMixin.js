@@ -1,6 +1,6 @@
 module.exports = {
   getInitialState: function() { return {width: 0}; },
-  componentDidUpdate: function() { this.updateWidth(); },
+  componentDidMount: function() { this.updateWidth(); },
   width: function() {
     var dom = this.getDOMNode();
     return dom ? dom.getBoundingClientRect().width : 0;
@@ -11,4 +11,4 @@ module.exports = {
       this.setState({width: w});
     }
   }
-}
+};

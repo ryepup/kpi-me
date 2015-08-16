@@ -1,42 +1,35 @@
 'use strict'; // -*- mode:js2 -*-
 
 var React = require('react'),
-    ChartistGraph = require('react-chartist'),
-    moment = require('moment'),
-    Chartist = require('chartist')
+    rd3 = require('react-d3')
 ;
 
+function rd3Render(points, width) {
+  var data = [{
+    values: points.map(function(p) {
+      return {x: new Date(p.utime), y: p.value};
+    })}],
+      divisor = 5,
+      xAxisTickValues = [],
+      nowUtime = new Date().getTime(),
+      step = Math.floor((nowUtime - points[0].utime) / divisor)
+  ;
+  for(var t = points[0].utime; t < nowUtime; t += step){
+    xAxisTickValues.push(new Date(t));
+  }
+
+  return (<rd3.LineChart data={data} width={width} xAxisTickCount={5} />);
+}
+
 module.exports = React.createClass({
+  mixins:[require('./WidthMixin.js')],
   render: function() {
     var points = this.props.kpi.points;
 
-    if(!points || points.length === 0){
+    if(!points || points.length <= 1 || this.state.width === 0){
       return (<div>Not enough data</div>);
     }
-    points = points.concat([{utime: new Date().getTime(), value: null}]);
 
-    var chartOpts = {
-          fullWidth: true,
-
-          axisX: {
-            // HACK: chartist is broken
-            type: function(unit, data, rect, axisOpts) {
-              return new Chartist.AutoScaleAxis(unit, data, rect, axisOpts);
-            }
-          },
-          series: {
-            d: {
-              lineSmooth: Chartist.Interpolation.step()
-            }
-          }
-        },
-        chartData = {
-          series: [{
-            name: 'd',
-            data: points.map(function(p) { return {x: p.utime, y: p.value}; })
-          }]
-        };
-
-    return (<ChartistGraph data={chartData} options={chartOpts} type={'Line'}/>);
+    return rd3Render(points, this.state.width);
   }
 });
