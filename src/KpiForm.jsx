@@ -7,12 +7,14 @@ var React = require('react'),
 module.exports = React.createClass({
   getInitialState: function() { return {name: ''}; },
   onChange: function() {
-    this.setState({name: this.refs.name.getValue().trim()});
+    this.setState({name: this.refs.name.getValue()});
   },
   add: function(e) {
     e.preventDefault();
     if(!this.state.name) return;
-    eventBus.publish(eventBus.events.ADD_KPI, this.state);
+    eventBus.publish(eventBus.events.ADD_KPI, {
+      name: this.state.name.trim()
+    });
     this.setState(this.getInitialState());
   },
   render: function() {
