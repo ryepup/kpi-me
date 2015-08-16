@@ -14,10 +14,14 @@ module.exports = React.createClass({
   render: function() {
     var self = this;
     var kpis = this.props.kpis.map(function(kpi, i) {
+      var inner = (<span/>);
+      if(i == this.state.activeKey){
+        inner = (<KpiItem kpi={kpi} />);
+      }
       return (<bs.Panel header={kpi.name} eventKey={i} key={i}>
-              <KpiItem kpi={kpi} />
+              {inner}
               </bs.Panel>);
-    });
+    }, this);
     return (<div>
             <h2>KPIs</h2>
             <bs.PanelGroup

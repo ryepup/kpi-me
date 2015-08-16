@@ -1,6 +1,6 @@
 
 var listeners = [],
-    eventNames = 'ADD_DATAPOINT ADD_KPI',
+    eventNames = 'ADD_DATAPOINT ADD_KPI REMOVE_LAST_DATAPOINT REMOVE_KPI',
     eventEnum = {};
 
 eventNames.split(' ').forEach(function(name) {

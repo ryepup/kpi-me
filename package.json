@@ -15,10 +15,9 @@
     "start": "parallelshell 'npm run watch -s' 'npm run serve -s'"
   },
   "browserify": {
-      "transform": [
-          "cssify",
+    "transform": [
+      "cssify",
       "reactify"
-
     ]
   },
   "author": "Ryan Davis <ryepup@gmail.com>",
@@ -34,8 +33,10 @@
     "watch": "^0.16.0",
     "watchify": "^3.3.1"
   },
-    "dependencies": {
-            "react": "^0.13.3",
+  "dependencies": {
+    "moment": "^2.10.6",
+    "numeral": "^1.5.3",
+    "react": "^0.13.3",
     "react-bootstrap": "^0.24.4",
     "react-chartist": "^0.8.0"
   }
