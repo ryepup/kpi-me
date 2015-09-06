@@ -1,0 +1,19 @@
+h5 {
+   font-weight: 800;
+   font-size: 1.1em;
+   text-align: center;
+}
+
+h4.panel-title {
+   font-size: 1.5em;
+}
+
+h4.panel-title > a {
+   width: 100%;
+   display: inline-block;
+}
+
+.kpi-stats .row:first-child div {
+   border-bottom: 1px solid black;
+   margin-bottom: .25em;
+}

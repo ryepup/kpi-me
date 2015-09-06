@@ -23,10 +23,14 @@ module.exports = React.createClass({
     ;
 
     return (
-        <rbs.Grid fluid={true}>
+        <rbs.Grid fluid={true} className="kpi-stats">
+        <rbs.Row>
+        <rbs.Col xs={4}><h5>Most Recent Datapoint</h5></rbs.Col>
+        <rbs.Col xs={4}><h5>Since {lastWeek.calendar()}</h5></rbs.Col>
+        <rbs.Col xs={4}><h5>All Time</h5></rbs.Col>
+        </rbs.Row>
         <rbs.Row>
         <rbs.Col xs={4}>
-        <h5>Most Recent Datapoint</h5>
         <dl className="dl-horizontal">
         <dt>Value</dt>
         <dd>{mostRecent.value}</dd>
@@ -34,17 +38,10 @@ module.exports = React.createClass({
         <dd>{d.fromNow()}</dd>
         </dl>
         </rbs.Col>
-        <rbs.Col xs={4}>
-        <h5>Since {lastWeek.calendar()}</h5>
-        <KpiPointStats points={lastWeekPoints} />
-        </rbs.Col>
-        <rbs.Col xs={4}>
-        <h5>All Time</h5>
-        <KpiPointStats points={kpi.points} />
-        </rbs.Col>
+        <rbs.Col xs={4}><KpiPointStats points={lastWeekPoints} /></rbs.Col>
+        <rbs.Col xs={4}><KpiPointStats points={kpi.points} /></rbs.Col>
         </rbs.Row>
         </rbs.Grid>
-
-);
+    );
   }
 });
