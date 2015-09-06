@@ -1,12 +1,12 @@
 {
   "name": "kpi-me",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "app to track personal KPIs",
   "main": "src/entry.js",
   "scripts": {
     "test": "exit 1",
-      "build": "browserify src/entry.js -d | exorcist build/bundle.js.map > build/bundle.js",
-      "postbuild": "minify build/bundle.js > build/bundle.min.js",
+    "build": "browserify src/entry.js -d | exorcist build/bundle.js.map > build/bundle.js",
+    "postbuild": "minify build/bundle.js > build/bundle.min.js",
     "watch:build": "watchify src/entry.js -d -o build/bundle.js",
     "watch:html": "watch 'cp src/index.html build/' src/",
     "watch": "parallelshell 'npm run watch:build -s' 'npm run watch:html -s'",
