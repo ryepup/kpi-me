@@ -2,11 +2,12 @@
 
 var React = require('react/addons'),
     bs = require('react-bootstrap'),
-    eventBus = require('./EventBus.js')
+    eventBus = require('./EventBus.js'),
+    ResetMixin = require('./ResetMixin.js')
 ;
 
 module.exports = React.createClass({
-  mixins: [React.addons.LinkedStateMixin],
+  mixins: [React.addons.LinkedStateMixin, ResetMixin],
   getInitialState: function() { return {value: 0}; },
   add: function(e) {
     e.preventDefault();
@@ -17,7 +18,7 @@ module.exports = React.createClass({
         value: parseFloat(this.state.value)
       }
     });
-    this.setState(this.getInitialState());
+    this.reset();
   },
   render: function() {
     var addBtn = <bs.ButtonInput bsStyle="primary" type="button" onClick={this.add}>Add</bs.ButtonInput>;

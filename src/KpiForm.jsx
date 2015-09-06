@@ -2,10 +2,11 @@
 
 var React = require('react/addons'),
     bs = require('react-bootstrap'),
-    eventBus = require('./EventBus.js')
+    eventBus = require('./EventBus.js'),
+    ResetMixin = require('./ResetMixin.js')
 ;
 module.exports = React.createClass({
-  mixins: [React.addons.LinkedStateMixin],
+  mixins: [React.addons.LinkedStateMixin, ResetMixin],
   getInitialState: function() { return {name: ''}; },
   add: function(e) {
     e.preventDefault();
@@ -13,7 +14,7 @@ module.exports = React.createClass({
     eventBus.publish(eventBus.events.ADD_KPI, {
       name: this.state.name.trim()
     });
-    this.setState(this.getInitialState());
+    this.reset();
   },
   render: function() {
     var addBtn = <bs.ButtonInput bsStyle="primary" onClick={this.add}>Add</bs.ButtonInput>;
@@ -21,7 +22,7 @@ module.exports = React.createClass({
       <div>
         <h2>Add KPI</h2>
         <bs.Input type="text" placeholder="name" valueLink={this.linkState('name')}
-            buttonAfter={addBtn} label="KPI Name" />
+      buttonAfter={addBtn} label="KPI Name" />
         </div>
     );
   }
