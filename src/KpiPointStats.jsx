@@ -3,6 +3,7 @@
 var React = require('react'),
     numeral = require('numeral'),
     avg = function(points) {
+      points = points || [];
       if(points.length === 0) return 0;
       var total = points.reduce(function(acc, v) {
           return (acc || 0) + v;
@@ -18,6 +19,8 @@ module.exports = React.createClass({
 
   render:function() {
     var points = this.props.points.map(function(p) { return p.value; });
+
+    if(points.length === 0) return <span />;
 
     return (<dl className="dl-horizontal">
             <dt>Average</dt>
