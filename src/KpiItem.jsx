@@ -30,10 +30,12 @@ module.exports = React.createClass({
         <rbs.Row>
         <rbs.Col xs={12} md={8}><KpiStats kpi={this.props.kpi} /></rbs.Col>
 
-        <rbs.Col xs={5} md={4} lg={2}>
-        <rbs.Button bsStyle="warning" onClick={this.onDeleteLastPoint} block={true}><rbs.Glyphicon glyph="trash"/> Delete last point</rbs.Button>
+        <rbs.Col xs={6} md={4} lg={2}>
+        <rbs.Button bsStyle="warning" onClick={this.onDeleteLastPoint} block={true}>
+        <rbs.Glyphicon glyph="trash"/> Delete last <span className="hidden-xs">point</span>
+        </rbs.Button>
         </rbs.Col>
-        <rbs.Col xs={5} xsOffset={2} mdOffset={0} md={4} lg={2}>
+        <rbs.Col xs={6} md={4} lg={2}>
         <br className="visible-md-block"/>
         <rbs.Button className="delete-kpi" bsStyle="danger" onClick={this.onDeleteKpi} block={true}><rbs.Glyphicon glyph="trash"/> Delete KPI</rbs.Button>
         </rbs.Col>
