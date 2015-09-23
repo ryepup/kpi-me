@@ -12,8 +12,3 @@ h4.panel-title > a {
    width: 100%;
    display: inline-block;
 }
-
-.kpi-stats .row:first-child div {
-   border-bottom: 1px solid black;
-   margin-bottom: .25em;
-}

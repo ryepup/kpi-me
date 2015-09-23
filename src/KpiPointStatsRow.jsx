@@ -12,26 +12,24 @@ var React = require('react'),
     },
     min = function(points) { return Math.min.apply(null, points); },
     max = function(points) { return Math.max.apply(null, points); },
-    fmt = function(x) { return numeral(x).format('0,0.00'); }
+    fmt = function(x) {
+      if(x === Infinity || x === -Infinity) return '-';
+      return numeral(x).format('0,0.00');
+    }
 ;
 
 module.exports = React.createClass({
 
   render:function() {
-    var points = this.props.points.map(function(p) { return p.value; });
+    var points = this.props.points.map(function(p) { return p.value; }),
+        heading = <th>{this.props.title}</th>;
 
-    if(points.length === 0) return <span />;
-
-    return (<dl className="dl-horizontal">
-            <dt>Average</dt>
-            <dd>{fmt(avg(points))}</dd>
-            <dt>Min</dt>
-            <dd>{fmt(min(points))}</dd>
-            <dt>Max</dt>
-            <dd>{fmt(max(points))}</dd>
-            <dt>N</dt>
-            <dd>{points.length}</dd>
-            </dl>);
+    return <tr>{heading}
+      <td>{fmt(avg(points))}</td>
+      <td>{fmt(min(points))}</td>
+      <td>{fmt(max(points))}</td>
+      <td>{points.length}</td>
+      </tr>;
 
   }
 });
