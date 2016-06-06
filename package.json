@@ -10,9 +10,7 @@
     "watch:build": "watchify src/entry.js -d -o build/bundle.js",
     "watch:html": "watch 'cp src/index.html build/' src/",
     "watch": "parallelshell 'npm run watch:build -s' 'npm run watch:html -s'",
-    "serve": "parallelshell 'npm run serve:html -s' 'npm run serve:livereload -s'",
-    "serve:html": "http-server -p 3000 build/ -o",
-    "serve:livereload": "live-reload --port 9091 build/",
+    "serve": "live-server build/",
     "start": "parallelshell 'npm run watch -s' 'npm run serve -s'"
   },
   "browserify": {
@@ -27,8 +25,7 @@
     "browserify": "^10.2.4",
     "cssify": "^0.7.0",
     "exorcist": "^0.4.0",
-    "http-server": "^0.8.0",
-    "live-reload": "^1.1.0",
+    "live-server": "^1.0.0",
     "minify": "^1.4.19",
     "parallelshell": "^1.2.0",
     "react-tools": "^0.13.3",
