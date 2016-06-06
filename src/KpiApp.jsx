@@ -2,9 +2,11 @@
 
 var React = require('react'),
     KpiList = require('./KpiList.jsx'),
+    KpiExport = require('./KpiExport.jsx'),
     KpiForm = require('./KpiForm.jsx'),
     KPI_ME = 'kpi-me',
-    eventBus = require('./EventBus.js')
+    eventBus = require('./EventBus.js'),
+    sendEmail = require('./email')
 ;
 
 module.exports = React.createClass({
@@ -15,6 +17,7 @@ module.exports = React.createClass({
     eventBus.on(eventBus.events.ADD_KPI, this.addKpi);
     eventBus.on(eventBus.events.REMOVE_KPI, this.removeKpi);
     eventBus.on(eventBus.events.REMOVE_LAST_DATAPOINT, this.removeDataPoint);
+    eventBus.on(eventBus.events.EMAIL_KPIS, this.emailKpis);
   },
   saveToLocalStorage: function() {
     localStorage.setItem(KPI_ME, JSON.stringify(this.state));
@@ -38,10 +41,14 @@ module.exports = React.createClass({
     opts.kpi.points.pop();
     this.forceUpdate(this.saveToLocalStorage);
   },
+  emailKpis: function(opts) {
+    sendEmail(localStorage.getItem(KPI_ME));
+  },
   render: function() {
     return (<div className="container-fluid">
             <KpiList kpis={this.state.kpis} />
             <KpiForm />
+            <KpiExport />
             </div>);
   }
 });
