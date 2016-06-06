@@ -1,7 +1,7 @@
 // browserify root
 
-var React = require('react'),
-    KpiApp = require('./KpiApp.jsx')
+const React = require('react'),
+      KpiApp = require('./KpiApp.jsx')
 ;
 require('./style.css');
 React.render(<KpiApp/>, document.getElementById('content'));

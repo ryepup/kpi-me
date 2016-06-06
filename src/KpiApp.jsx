@@ -1,12 +1,12 @@
 'use strict'; // -*- mode:js2 -*-
 
-var React = require('react'),
-    KpiList = require('./KpiList.jsx'),
-    KpiExport = require('./KpiExport.jsx'),
-    KpiForm = require('./KpiForm.jsx'),
-    KPI_ME = 'kpi-me',
-    eventBus = require('./EventBus.js'),
-    sendEmail = require('./email')
+const React = require('react'),
+      KpiList = require('./KpiList.jsx'),
+      KpiExport = require('./KpiExport.jsx'),
+      KpiForm = require('./KpiForm.jsx'),
+      KPI_ME = 'kpi-me',
+      eventBus = require('./EventBus.js'),
+      sendEmail = require('./email')
 ;
 
 module.exports = React.createClass({
@@ -26,13 +26,13 @@ module.exports = React.createClass({
     this.setState({kpis: this.state.kpis.concat([kpi])}, this.saveToLocalStorage);
   },
   removeKpi: function(opts) {
-    var idx = this.state.kpis.indexOf(opts.kpi);
+    let idx = this.state.kpis.indexOf(opts.kpi);
     this.state.kpis.splice(idx, 1);
     this.forceUpdate(this.saveToLocalStorage);
   },
   addDataPoint: function(opts) {
-    var idx = this.state.kpis.indexOf(opts.kpi);
-    var kpi = this.state.kpis[idx];
+    let idx = this.state.kpis.indexOf(opts.kpi),
+        kpi = this.state.kpis[idx];
     kpi.points = kpi.points || [];
     kpi.points.push(opts.point);
     this.forceUpdate(this.saveToLocalStorage);

@@ -1,8 +1,8 @@
 'use strict'; // -*- mode:js2 -*-
 
-var React = require('react'),
-    eventBus = require('./EventBus.js'),
-    bs = require('react-bootstrap');
+const React = require('react'),
+      eventBus = require('./EventBus.js'),
+      bs = require('react-bootstrap');
 
 module.exports = React.createClass({
   getInitialState: () => ({}),

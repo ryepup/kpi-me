@@ -1,19 +1,19 @@
 'use strict'; // -*- mode:js2 -*-
 
-var React = require('react'),
-    moment = require('moment'),
-    KpiPointStatsRow = require('./KpiPointStatsRow.jsx')
+const React = require('react'),
+      moment = require('moment'),
+      KpiPointStatsRow = require('./KpiPointStatsRow.jsx')
 ;
 
 module.exports = React.createClass({
 
   render: function() {
-    var kpi = this.props.kpi;
+    let kpi = this.props.kpi;
 
     if(!kpi.points || kpi.points.length === 0)
       return (<span />);
 
-    var mostRecent = kpi.points[kpi.points.length - 1],
+    let mostRecent = kpi.points[kpi.points.length - 1],
         d = moment(mostRecent.utime),
         lastWeek = moment().subtract(7, 'days'),
         lastWeekPoints = kpi.points

@@ -1,7 +1,8 @@
 
 var listeners = [],
-    eventNames = 'ADD_DATAPOINT ADD_KPI REMOVE_LAST_DATAPOINT REMOVE_KPI EMAIL_KPIS',
     eventEnum = {};
+
+const eventNames = 'ADD_DATAPOINT ADD_KPI REMOVE_LAST_DATAPOINT REMOVE_KPI EMAIL_KPIS';
 
 eventNames.split(' ')
   .forEach((name) => eventEnum[name] = name);

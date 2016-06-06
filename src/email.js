@@ -1,7 +1,7 @@
 'use strict';
 
 function sendEmail(json){
-  var emailProps = {
+  let emailProps = {
     subject: 'KPI-ME data export',
     body: 'Your data is attached. Thanks!',
     attachments: 'base64:kpi-me.json//' + btoa(json)

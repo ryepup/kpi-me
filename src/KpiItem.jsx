@@ -1,11 +1,11 @@
 'use strict'; // -*- mode:js2 -*-
 
-var React = require('react'),
-    rbs = require('react-bootstrap'),
-    KpiAddDataPoint = require('./KpiAddDataPoint.jsx'),
-    KpiGraph = require('./KpiGraph.jsx'),
-    KpiStats = require('./KpiStats.jsx'),
-    eventBus = require('./EventBus.js')
+const React = require('react'),
+      rbs = require('react-bootstrap'),
+      KpiAddDataPoint = require('./KpiAddDataPoint.jsx'),
+      KpiGraph = require('./KpiGraph.jsx'),
+      KpiStats = require('./KpiStats.jsx'),
+      eventBus = require('./EventBus.js')
 ;
 
 module.exports = React.createClass({

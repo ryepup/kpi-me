@@ -1,9 +1,9 @@
 'use strict'; // -*- mode:js2 -*-
 
-var React = require('react/addons'),
-    bs = require('react-bootstrap'),
-    eventBus = require('./EventBus.js'),
-    ResetMixin = require('./ResetMixin.js')
+const React = require('react/addons'),
+      bs = require('react-bootstrap'),
+      eventBus = require('./EventBus.js'),
+      ResetMixin = require('./ResetMixin.js')
 ;
 module.exports = React.createClass({
   mixins: [React.addons.LinkedStateMixin, ResetMixin],
@@ -17,7 +17,7 @@ module.exports = React.createClass({
     this.reset();
   },
   render: function() {
-    var addBtn = <bs.ButtonInput bsStyle="primary" onClick={this.add}>Add</bs.ButtonInput>;
+    let addBtn = <bs.ButtonInput bsStyle="primary" onClick={this.add}>Add</bs.ButtonInput>;
     return (
       <div>
         <h2>Add KPI</h2>
