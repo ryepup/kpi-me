@@ -5,8 +5,7 @@
   "main": "src/entry.js",
   "scripts": {
     "test": "exit 1",
-    "build": "browserify src/entry.js -d | exorcist build/bundle.js.map > build/bundle.js",
-    "postbuild": "minify build/bundle.js > build/bundle.min.js",
+    "build": "browserify -g uglifyify src/entry.js -d | exorcist build/bundle.js.map > build/bundle.min.js",
     "watch:build": "watchify src/entry.js -d -o build/bundle.js",
     "watch:html": "watch 'cp src/index.html build/' src/",
     "watch": "parallelshell 'npm run watch:build -s' 'npm run watch:html -s'",
@@ -24,7 +23,8 @@
             "react"
           ]
         }
-      ]
+      ],
+      "uglifyify"
     ]
   },
   "author": "Ryan Davis <ryepup@gmail.com>",
@@ -37,9 +37,9 @@
     "cssify": "^0.7.0",
     "exorcist": "^0.4.0",
     "live-server": "^1.0.0",
-    "minify": "^1.4.19",
     "parallelshell": "^1.2.0",
     "react-tools": "^0.13.3",
+    "uglifyify": "^3.0.1",
     "watch": "^0.16.0",
     "watchify": "^3.3.1"
   },
