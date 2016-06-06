@@ -1,6 +1,6 @@
 {
   "name": "kpi-me",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "app to track personal KPIs",
   "main": "src/entry.js",
   "scripts": {
