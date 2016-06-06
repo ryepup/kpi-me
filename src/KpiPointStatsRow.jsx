@@ -5,13 +5,11 @@ var React = require('react'),
     avg = function(points) {
       points = points || [];
       if(points.length === 0) return 0;
-      var total = points.reduce(function(acc, v) {
-          return (acc || 0) + v;
-      });
+      var total = points.reduce((acc, v) => acc + v, 0);
       return total / points.length;
     },
-    min = function(points) { return Math.min.apply(null, points); },
-    max = function(points) { return Math.max.apply(null, points); },
+    min = (points) => Math.min.apply(null, points),
+    max = (points) => Math.max.apply(null, points),
     fmt = function(x) {
       if(x === Infinity || x === -Infinity) return '-';
       return numeral(x).format('0,0.00');
@@ -21,7 +19,7 @@ var React = require('react'),
 module.exports = React.createClass({
 
   render:function() {
-    var points = this.props.points.map(function(p) { return p.value; }),
+    var points = this.props.points.map((p) => p.value),
         heading = <th>{this.props.title}</th>;
 
     return <tr>{heading}

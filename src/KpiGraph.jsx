@@ -6,9 +6,8 @@ var React = require('react'),
 
 function rd3Render(points, width) {
   var data = [{
-    values: points.map(function(p) {
-      return {x: new Date(p.utime), y: p.value};
-    })}],
+    values: points.map(p => ({x: new Date(p.utime), y: p.value}))
+  }],
       divisor = 5,
       xAxisTickValues = [],
       nowUtime = new Date().getTime(),

@@ -8,7 +8,7 @@ var React = require('react/addons'),
 
 module.exports = React.createClass({
   mixins: [React.addons.LinkedStateMixin, ResetMixin],
-  getInitialState: function() { return {value: 0}; },
+  getInitialState: () => ({value: 0}),
   add: function(e) {
     e.preventDefault();
     eventBus.publish(eventBus.events.ADD_DATAPOINT, {

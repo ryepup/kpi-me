@@ -10,9 +10,9 @@ var React = require('react'),
 ;
 
 module.exports = React.createClass({
-  getInitialState: function() { return {kpis: []}; },
+  getInitialState: () => ({kpis: []}),
   componentDidMount: function() {
-    this.setState(JSON.parse(localStorage.getItem(KPI_ME)));
+    this.setState(JSON.parse(localStorage.getItem(KPI_ME)) || this.state);
     eventBus.on(eventBus.events.ADD_DATAPOINT, this.addDataPoint);
     eventBus.on(eventBus.events.ADD_KPI, this.addKpi);
     eventBus.on(eventBus.events.REMOVE_KPI, this.removeKpi);
@@ -41,9 +41,7 @@ module.exports = React.createClass({
     opts.kpi.points.pop();
     this.forceUpdate(this.saveToLocalStorage);
   },
-  emailKpis: function(opts) {
-    sendEmail(localStorage.getItem(KPI_ME));
-  },
+  emailKpis: () => sendEmail(localStorage.getItem(KPI_ME)),
   render: function() {
     return (<div className="container-fluid">
             <KpiList kpis={this.state.kpis} />

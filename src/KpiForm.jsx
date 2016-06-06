@@ -7,7 +7,7 @@ var React = require('react/addons'),
 ;
 module.exports = React.createClass({
   mixins: [React.addons.LinkedStateMixin, ResetMixin],
-  getInitialState: function() { return {name: ''}; },
+  getInitialState: () => ({name: ''}),
   add: function(e) {
     e.preventDefault();
     if(!this.state.name) return;

@@ -5,6 +5,7 @@ var React = require('react'),
     bs = require('react-bootstrap');
 
 module.exports = React.createClass({
+  getInitialState: () => ({}),
   email: function(e) {
     e.preventDefault();
     eventBus.publish(eventBus.events.EMAIL_KPIS);

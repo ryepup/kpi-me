@@ -16,9 +16,8 @@ module.exports = React.createClass({
     var mostRecent = kpi.points[kpi.points.length - 1],
         d = moment(mostRecent.utime),
         lastWeek = moment().subtract(7, 'days'),
-        lastWeekPoints = kpi.points.filter(function(p) {
-          return moment(p.utime).isAfter(lastWeek);
-        }),
+        lastWeekPoints = kpi.points
+          .filter((p) => moment(p.utime).isAfter(lastWeek)),
         lastWeekTitle = 'Since ' + lastWeek.calendar()
     ;
 

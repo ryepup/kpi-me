@@ -5,12 +5,10 @@ var React = require('react'),
     bs = require('react-bootstrap')
 ;
 module.exports = React.createClass({
-  getInitialState: function() {
-    return {activeKey: null};
-  },
   handleSelect: function(key) {
     this.setState({ activeKey: key });
   },
+  getInitialState: () => ({activeKey: null}),
   render: function() {
     var self = this;
     var kpis = this.props.kpis.map(function(kpi, i) {
